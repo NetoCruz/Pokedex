@@ -3,6 +3,7 @@ import '../assets/styles/index.scss';
 import logo from '../assets/static/logo.png';
 import Pokemon from './pokemon';
 
+
 const HelloWorld = () => {
   return (
     <div>
