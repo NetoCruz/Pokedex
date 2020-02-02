@@ -6,11 +6,12 @@ import Pokemon from './pokemon';
 const HelloWorld = () => {
   return (
     <div>
-      <nav className='navbar navbar-light'>
-        <a className='navbar-brand' href='#'>
-          <img src={logo} width='180' height='90' className='d-inline-block  ' alt='logo' />
-        </a>
-      </nav>
+      <header>
+        <nav>
+          <img src={logo} width='190' height='90' className='d-inline-block  ' alt='logo' />
+        </nav>
+      </header>
+
       <h1>Arena</h1>
       {/* <img src={logo} alt='logo' /> */}
       <Pokemon />
