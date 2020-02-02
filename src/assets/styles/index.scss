@@ -4,7 +4,15 @@ body{
     font-family: $theme-font;
     margin:0;
 }
+.title{
+    background-color: #272727;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom: 20px;
+}
 h1{
+    color: white;
     font-size: 70px;
 }
 

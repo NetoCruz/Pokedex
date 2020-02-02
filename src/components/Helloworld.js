@@ -11,8 +11,7 @@ const HelloWorld = () => {
           <img src={logo} width='190' height='90' className='d-inline-block  ' alt='logo' />
         </nav>
       </header>
-
-      <h1>Arena</h1>
+      <div className='title'><h1>POKEDEX</h1></div>
       {/* <img src={logo} alt='logo' /> */}
       <Pokemon />
     </div>

@@ -1,5 +1,6 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
+import '../assets/styles/pokemon.scss';
 
 function Pokemon() {
 
@@ -40,7 +41,7 @@ function Pokemon() {
         ) : (
           poke.map((img) => (
             <div>
-              <div className='card' style={{ width: '10rem', height: '15rem' }}>
+              <div className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
                 <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
                 <div className='card-body'>
                   <h5 className='card-title'>{img.name}</h5>
@@ -48,9 +49,21 @@ function Pokemon() {
                 </div>
               </div>
             </div>
+            // <li className='cards__item'>
+            //   <div className='card'>
+            //     <div>
+            //       <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
+            //     </div>
+            //     <div className='card__content'>
+            //       <div className='card__title'>{img.name}</div>
+            //       <p className='card__text'>
+            //         { img.types[0].type.name }
+            //       </p>
+            //     </div>
+            //   </div>
+            // </li>
           ))
         )}
-
         {/* <button
           onClick={handleClick}
         >
