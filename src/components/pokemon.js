@@ -15,10 +15,10 @@ function Pokemon() {
     setSearchTerm(event.target.value);
   };
   React.useEffect(() => {
-    const results = poke.filter((person) => person.name.toLowerCase().includes(searchTerm));
+    const results = searchResults.filter((person) => person.name.toLowerCase().includes(searchTerm));
     setSearchResults(results);
     if (searchTerm === '') {
-      setSearchResults([]);
+      setSearchResults(poke);
     }
   }, [searchTerm]);
 
@@ -33,6 +33,7 @@ function Pokemon() {
           fetch(item.url)
             .then((response) => response.json())
             .then((allpokemon) => arr.push(allpokemon));
+          setSearchResults(arr);
           setPoke(arr);
           //setLoad('false');
           return item.url;
@@ -52,7 +53,7 @@ function Pokemon() {
         { load ? (
           <Skeleton />
         ) : (
-          poke.map((img) => (
+          searchResults.map((img) => (
             <div>
               <div className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
                 <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
@@ -88,7 +89,7 @@ function Pokemon() {
           value={searchTerm}
           onChange={handleChange}
         />
-        <ul>
+        {/* <ul>
           {searchResults.map((img) => (
             <div>
               <div className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
@@ -100,7 +101,7 @@ function Pokemon() {
               </div>
             </div>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </>
   );
