@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import '../assets/styles/pokemon.scss';
+import Skeleton from './Skeleton';
 
 function Pokemon() {
 
@@ -37,7 +38,7 @@ function Pokemon() {
 
         {/* <img src={data.sprites.front_default} alt='pokeimg' /> */}
         { load ? (
-          <p>Loading</p>
+          <Skeleton />
         ) : (
           poke.map((img) => (
             <div>
@@ -69,6 +70,7 @@ function Pokemon() {
         >
           { load ? 'Close Additional Info' : 'More Info' }
         </button> */}
+        
       </div>
     </>
   );
