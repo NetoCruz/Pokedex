@@ -47,12 +47,22 @@ function Pokemon() {
   console.log(poke);
   return (
     <>
+      <div className='search'>
+        <input
+          className='searchTerm'
+          type='text'
+          placeholder="Search by pokemon's name"
+          value={searchTerm}
+          onChange={handleChange}
+        />
+      </div>
       <div className='pokegallery'>
 
         {/* <img src={data.sprites.front_default} alt='pokeimg' /> */}
         { load ? (
           <Skeleton />
         ) : (
+
           searchResults.map((img) => (
             <div>
               <div className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
@@ -83,12 +93,7 @@ function Pokemon() {
         >
           { load ? 'Close Additional Info' : 'More Info' }
         </button> */}
-        <input
-          type='text'
-          placeholder='Search'
-          value={searchTerm}
-          onChange={handleChange}
-        />
+
         {/* <ul>
           {searchResults.map((img) => (
             <div>
