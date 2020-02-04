@@ -7,8 +7,20 @@ function Pokemon() {
 
   const [result, setResult] = React.useState([]);
   const [poke, setPoke] = React.useState([]);
-  //const [loading, setLoading] = React.useState('false');
   const [load, setLoad] = React.useState('true');
+
+  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchResults, setSearchResults] = React.useState([]);
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  React.useEffect(() => {
+    const results = searchResults.filter((person) => person.name.toLowerCase().includes(searchTerm));
+    setSearchResults(results);
+    if (searchTerm === '') {
+      setSearchResults(poke);
+    }
+  }, [searchTerm]);
 
   const arr = [];
   useEffect(() => {
@@ -21,6 +33,7 @@ function Pokemon() {
           fetch(item.url)
             .then((response) => response.json())
             .then((allpokemon) => arr.push(allpokemon));
+          setSearchResults(arr);
           setPoke(arr);
           //setLoad('false');
           return item.url;
@@ -34,13 +47,23 @@ function Pokemon() {
   console.log(poke);
   return (
     <>
+      <div className='search'>
+        <input
+          className='searchTerm'
+          type='text'
+          placeholder="Search by pokemon's name"
+          value={searchTerm}
+          onChange={handleChange}
+        />
+      </div>
       <div className='pokegallery'>
 
         {/* <img src={data.sprites.front_default} alt='pokeimg' /> */}
         { load ? (
           <Skeleton />
         ) : (
-          poke.map((img) => (
+
+          searchResults.map((img) => (
             <div>
               <div className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
                 <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
@@ -70,7 +93,20 @@ function Pokemon() {
         >
           { load ? 'Close Additional Info' : 'More Info' }
         </button> */}
-        
+
+        {/* <ul>
+          {searchResults.map((img) => (
+            <div>
+              <div className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
+                <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
+                <div className='card-body'>
+                  <h5 className='card-title'>{img.name}</h5>
+                  <h6>{img.types[0].type.name}</h6>
+                </div>
+              </div>
+            </div>
+          ))}
+        </ul> */}
       </div>
     </>
   );
