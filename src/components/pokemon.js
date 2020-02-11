@@ -1,6 +1,7 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import '../assets/styles/pokemon.scss';
+import { Button, Modal } from 'react-bootstrap';
 import Skeleton from './Skeleton';
 
 function Pokemon() {
@@ -11,6 +12,13 @@ function Pokemon() {
 
   const [searchTerm, setSearchTerm] = React.useState('');
   const [searchResults, setSearchResults] = React.useState([]);
+
+  const [show, setShow] = React.useState(false);
+  const [id, setId] = React.useState('');
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const handleChange = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -21,6 +29,10 @@ function Pokemon() {
       setSearchResults(poke);
     }
   }, [searchTerm]);
+
+  useEffect(() => {
+    console.log('kolo');
+  }, [show]);
 
   const arr = [];
   useEffect(() => {
@@ -44,7 +56,7 @@ function Pokemon() {
   setTimeout(() => {
     setLoad(false);
   }, 2000);
-  console.log(searchResults[0]);
+  //console.log(searchResults[0]);
   return (
     <>
       <div className='search'>
@@ -65,7 +77,7 @@ function Pokemon() {
 
           searchResults.map((img, i) => (
             <div id={i + 1} key={i}>
-              <a href='#' >
+              <a onClick={handleShow}>
                 <div className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
                   <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
                   <div className='card-body'>
@@ -109,6 +121,18 @@ function Pokemon() {
             </div>
           ))}
         </ul> */}
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>hola</Modal.Body>
+          <Modal.Footer>
+            <Button variant='secondary' onClick={handleClose}>
+            Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );
