@@ -1,8 +1,9 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import '../assets/styles/pokemon.scss';
-import { Button, Modal } from 'react-bootstrap';
+
 import Skeleton from './Skeleton';
+import Modal from './Modal';
 
 function Pokemon() {
 
@@ -15,6 +16,8 @@ function Pokemon() {
 
   const [show, setShow] = React.useState(false);
   const [id, setId] = React.useState('');
+
+  const [modal, setModal] = React.useState();
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -56,7 +59,7 @@ function Pokemon() {
   setTimeout(() => {
     setLoad(false);
   }, 2000);
-  //console.log(searchResults[0]);
+  console.log(modal);
   return (
     <>
       <div className='search'>
@@ -78,13 +81,17 @@ function Pokemon() {
           searchResults.map((img, i) => (
             <div id={i + 1} key={i}>
 
-              <div onClick={handleShow} className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
+              <div  onClick={() => setModal(i)}  className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
                 <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
                 <div className='card-body'>
                   <h5 className='card-title'>{img.name}</h5>
                   <h6>{img.types[0].type.name}</h6>
                 </div>
               </div>
+
+              <Modal open={i === modal} {...{ modal, setModal }}>
+             <h2>{img.name}</h2>
+          </Modal>
 
             </div>
             // <li className='cards__item'>
@@ -122,17 +129,6 @@ function Pokemon() {
           ))}
         </ul> */}
 
-        <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>hola</Modal.Body>
-          <Modal.Footer>
-            <Button variant='secondary' onClick={handleClose}>
-            Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
       </div>
     </>
   );
