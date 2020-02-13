@@ -77,15 +77,15 @@ function Pokemon() {
 
           searchResults.map((img, i) => (
             <div id={i + 1} key={i}>
-              <a onClick={handleShow}>
-                <div className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
-                  <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
-                  <div className='card-body'>
-                    <h5 className='card-title'>{img.name}</h5>
-                    <h6>{img.types[0].type.name}</h6>
-                  </div>
+
+              <div onClick={handleShow} className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
+                <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
+                <div className='card-body'>
+                  <h5 className='card-title'>{img.name}</h5>
+                  <h6>{img.types[0].type.name}</h6>
                 </div>
-              </a>
+              </div>
+
             </div>
             // <li className='cards__item'>
             //   <div className='card'>
