@@ -15,8 +15,8 @@ export const ModalBackground = styled.div`
   z-index: 1;
 `
 
-export const ModalContainer = styled.div`
-
+export const ModalContainer = styled.dialog`
+::backdrop {
   align-self: center;
   justify-self: center;
   background: white;
@@ -27,7 +27,7 @@ export const ModalContainer = styled.div`
   padding: 2em;
   border-radius: 1em;
   box-shadow: 0 0 3em black;
-
+}
 
 `
 
