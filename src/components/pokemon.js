@@ -18,6 +18,7 @@ function Pokemon() {
   const [id, setId] = React.useState('');
 
   const [modal, setModal] = React.useState();
+  const [isModalOpen, toggleModal] = React.useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -81,7 +82,7 @@ function Pokemon() {
           searchResults.map((img, i) => (
             <div id={i + 1} key={i}>
 
-              <div  onClick={() => setModal(i)}  className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
+              <div onClick={() => setModal(i)} className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
                 <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
                 <div className='card-body'>
                   <h5 className='card-title'>{img.name}</h5>
@@ -89,9 +90,15 @@ function Pokemon() {
                 </div>
               </div>
 
-              <Modal open={i === modal} {...{ modal, setModal }}>
+              {/* <Modal open={i === modal} {...{ modal, setModal }}>
              <h2>{img.name}</h2>
-          </Modal>
+          </Modal> */}
+
+              <Modal {...{ modal, setModal }} isOpen={i === modal} toggle={setModal}>
+                <h2>{img.name}</h2>
+
+                <button onClick={() => toggleModal(false)}>toggle</button>
+              </Modal>
 
             </div>
             // <li className='cards__item'>
