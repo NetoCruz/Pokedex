@@ -17,6 +17,7 @@ export const ModalBackground = styled.div`
 
 export const ModalContainer = styled.dialog`
 ::backdrop {
+
   align-self: center;
   justify-self: center;
   background: white;
