@@ -7,6 +7,22 @@
 }
 
 
+.card{
+  background-color:#F0F0C9;
+  
+}
+.card img {
+  transition: all .2s ease-in-out;
+}
+.card img:hover{
+  transform: scale(1.1);
+}
+
+.card:hover{
+  background-color: #C5C5A5 !important;
+  
+ }
+
 .search {
     width: 100%;
     position: relative;

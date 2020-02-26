@@ -42,7 +42,7 @@ function Pokemon() {
   useEffect(() => {
     //setLoading('true');
 
-    fetch('https:pokeapi.co/api/v2/pokemon?limit=100')
+    fetch('https:pokeapi.co/api/v2/pokemon/?limit=52')
       .then((response) => response.json())
       .then((data) => setResult(
         data.results.map((item) => {
@@ -83,7 +83,7 @@ function Pokemon() {
           searchResults.map((img, i) => (
             <div id={i + 1} key={i}>
 
-              <div onClick={() => setModal(i)} className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9' }}>
+              <div onClick={() => setModal(i)} className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9',cursor:'pointer' }}>
                 <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
                 <div className='card-body'>
                   <h5 className='card-title'>{img.name}</h5>
@@ -91,15 +91,30 @@ function Pokemon() {
                 </div>
               </div>
 
-
               {/* <Modal open={i === modal} {...{ modal, setModal }}>
              <h2>{img.name}</h2>
           </Modal> */}
 
               <Modal {...{ modal, setModal }} isOpen={i === modal} toggle={setModal}>
                 <h2>{img.name}</h2>
-
-                <button onClick={() => toggleModal(false)}>toggle</button>
+                <img  src={img.sprites.front_default} alt='pokemon' style={{ height: '200px' }} />
+                <p>
+                type:
+                  {img.types[0].type.name}
+                </p>
+                <p>
+                abilities:
+                  {img.abilities[0].ability.name}
+                </p>
+                <p>
+                height:
+                  {img.height}
+                </p>
+                <p>
+                weight:
+                  {img.weight}
+                </p>
+                <button onClick={() => toggleModal(false)}>cerrar</button>
 
               </Modal>
 
