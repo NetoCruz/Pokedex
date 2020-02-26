@@ -42,7 +42,7 @@ function Pokemon() {
   useEffect(() => {
     //setLoading('true');
 
-    fetch('https:pokeapi.co/api/v2/pokemon/?limit=52')
+    fetch('https:pokeapi.co/api/v2/pokemon/?limit=152')
       .then((response) => response.json())
       .then((data) => setResult(
         data.results.map((item) => {
@@ -60,7 +60,7 @@ function Pokemon() {
 
   setTimeout(() => {
     setLoad(false);
-  }, 2000);
+  }, 3800);
   console.log(modal);
   return (
     <>
