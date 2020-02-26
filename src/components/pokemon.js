@@ -41,11 +41,8 @@ function Pokemon() {
   const arr = [];
   useEffect(() => {
     //setLoading('true');
-<<<<<<< HEAD
-    fetch('https:pokeapi.co/api/v2/pokemon?limit=50')
-=======
+
     fetch('https:pokeapi.co/api/v2/pokemon?limit=100')
->>>>>>> 2fc58c68eaf0631d345d75c667dcb61e90d00584
       .then((response) => response.json())
       .then((data) => setResult(
         data.results.map((item) => {
