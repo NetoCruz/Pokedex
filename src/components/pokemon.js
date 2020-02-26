@@ -18,6 +18,7 @@ function Pokemon() {
   const [id, setId] = React.useState('');
 
   const [modal, setModal] = React.useState();
+  const [isModalOpen, toggleModal] = React.useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -93,9 +94,16 @@ function Pokemon() {
                 </div>
               </div>
 
-              <Modal open={i === modal} {...{ modal, setModal }}>
+
+              {/* <Modal open={i === modal} {...{ modal, setModal }}>
+             <h2>{img.name}</h2>
+          </Modal> */}
+
+              <Modal {...{ modal, setModal }} isOpen={i === modal} toggle={setModal}>
                 <h2>{img.name}</h2>
-                <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
+
+                <button onClick={() => toggleModal(false)}>toggle</button>
+
               </Modal>
 
             </div>
