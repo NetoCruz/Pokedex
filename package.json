@@ -1,5 +1,6 @@
 {
   "name": "pokemonarena",
+  "homepage":"https://netocruz.github.io/pokedex"
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -40,6 +41,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.18.0",
     "file-loader": "^5.0.2",
+    "gh-pages": "^2.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
