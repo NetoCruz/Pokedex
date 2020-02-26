@@ -1,13 +1,15 @@
 {
   "name": "pokemonarena",
-  "homepage":"https://netocruz.github.io/pokedex"
+  "homepage":"https://netocruz.github.io/pokedex",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --open --mode development"
+    "start": "webpack-dev-server --open --mode development",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d dist"
   },
   "keywords": [
     "react",
