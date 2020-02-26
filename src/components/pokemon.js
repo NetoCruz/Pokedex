@@ -42,7 +42,7 @@ function Pokemon() {
   useEffect(() => {
     //setLoading('true');
 
-    fetch('https:pokeapi.co/api/v2/pokemon/?limit=52')
+    fetch('https:pokeapi.co/api/v2/pokemon/')
       .then((response) => response.json())
       .then((data) => setResult(
         data.results.map((item) => {
