@@ -1,6 +1,6 @@
 {
   "name": "pokemonarena",
-  "homepage":"https://NetoCruz.github.io/Pokedex",
+  "homepage": "https://NetoCruz.github.io",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode production",
     "start": "webpack-dev-server --open --mode development",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d dist"
-    
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "react",
@@ -47,6 +46,7 @@
     "gh-pages": "^2.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2",
