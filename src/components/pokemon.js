@@ -1,11 +1,10 @@
 /* eslint-disable react/button-has-type */
 import React, { useEffect } from 'react';
 import '../assets/styles/pokemon.scss';
-
 import Skeleton from './Skeleton';
 import Modal from './Modal';
 
-function Pokemon() {
+function Pokemon(props) {
 
   const [result, setResult] = React.useState([]);
   const [poke, setPoke] = React.useState([]);
@@ -61,9 +60,10 @@ function Pokemon() {
   setTimeout(() => {
     setLoad(false);
   }, 3500);
-  console.log(modal);
+  console.log(props.tema.head);
   return (
     <>
+    
       <div className='search'>
         <input
           className='searchTerm'
@@ -74,30 +74,31 @@ function Pokemon() {
         />
       </div>
       <div className='pokegallery'>
-
+        
         {/* <img src={data.sprites.front_default} alt='pokeimg' /> */}
         { load ? (
           <Skeleton />
         ) : (
 
           searchResults.map((img, i) => (
+            
             <div id={i + 1} key={i}>
-
-              <div onClick={() => setModal(i)} className='card' style={{ width: '10rem', height: '15rem', backgroundColor: '#F0F0C9',cursor:'pointer' }}>
+              
+              <div onClick={() => setModal(i)} className='card' style={{ width: '10rem', height: '15rem', backgroundColor:props.tema.card, cursor: 'pointer' }}>
                 <img className='card-img-top' src={img.sprites.front_default} alt='pokemon' />
                 <div className='card-body'>
                   <h5 className='card-title'>{img.name}</h5>
                   <h6>{img.types[0].type.name}</h6>
                 </div>
               </div>
-
+             
               {/* <Modal open={i === modal} {...{ modal, setModal }}>
              <h2>{img.name}</h2>
           </Modal> */}
 
               <Modal {...{ modal, setModal }} isOpen={i === modal} toggle={setModal}>
                 <h2>{img.name}</h2>
-                <img  src={img.sprites.front_default} alt='pokemon' style={{ height: '200px' }} />
+                <img src={img.sprites.front_default} alt='pokemon' style={{ height: '200px' }} />
                 <p>
                 type:
                   {img.types[0].type.name}
@@ -155,6 +156,7 @@ function Pokemon() {
         </ul> */}
 
       </div>
+      
     </>
   );
 }

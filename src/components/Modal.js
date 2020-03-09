@@ -76,6 +76,7 @@ const Modal = styled(posed.div(modalPoses))`
     flex-direction: column;
     align-items: center;
   background: white;
+  color:black;
   width: 80%;
   height: auto;
   top: 50%;
